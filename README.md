@@ -1,0 +1,1 @@
+# goose-abstract-environment
