@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "goose-abstract-environment",
   "main": "lib/Environment.js",
   "repository": "redcode/goose-abstract-environment",
