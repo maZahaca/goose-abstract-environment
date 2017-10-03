@@ -1,9 +1,9 @@
 {
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.6",
   "name": "goose-abstract-environment",
   "main": "lib/AbstractEnvironment.js",
-  "repository": "redcode/goose-abstract-environment",
+  "repository": "redco/goose-abstract-environment",
   "description": "Abstact Environment for Goose which can be base for other environments",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
@@ -29,14 +29,14 @@
   },
   "pre-commit": "lint:staged",
   "lint-staged": {
-    "*.js": [
+    "lib/*.js": [
       "eslint --fix",
       "git add"
     ]
   },
   "scripts": {
-    "lint": "eslint --ignore-path .gitignore .",
-    "lint:fix": "eslint --ignore-path .gitignore --fix .",
+    "lint": "eslint --ignore-path .gitignore ./lib",
+    "lint:fix": "eslint --ignore-path .gitignore --fix ./lib",
     "lint:staged": "lint-staged",
     "build": "node build.js",
     "prepublish": "node build"
