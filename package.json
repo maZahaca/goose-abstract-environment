@@ -1,6 +1,6 @@
 {
   "private": true,
-  "version": "1.0.8",
+  "version": "1.0.9",
   "name": "goose-abstract-environment",
   "main": "lib/AbstractEnvironment.js",
   "repository": "redco/goose-abstract-environment",
@@ -8,9 +8,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "debug": "^3.0.1",
-    "vow": "^0.4.16",
-    "vow-node": "^0.3.0"
+    "debug": "^3.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

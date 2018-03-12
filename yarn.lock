@@ -2870,14 +2870,6 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-vow-node@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/vow-node/-/vow-node-0.3.0.tgz#babf87cd8209935f75c050c6a6b6a9342e293d5f"
-
-vow@^0.4.16:
-  version "0.4.16"
-  resolved "https://registry.yarnpkg.com/vow/-/vow-0.4.16.tgz#bb9d54d938d5f80520d658a740e7a895e30feeeb"
-
 which@1.2.x:
   version "1.2.14"
   resolved "https://registry.yarnpkg.com/which/-/which-1.2.14.tgz#9a87c4378f03e827cecaf1acdf56c736c01c14e5"
