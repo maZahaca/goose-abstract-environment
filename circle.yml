@@ -26,3 +26,5 @@ test:
     - yarn run lint
   override:
     - yarn run test
+  post:
+    - yarn run coveralls
