@@ -1,0 +1,16 @@
+version: 2
+jobs:
+   build:
+     docker:
+       - image: node:8.11.1-alpine
+     steps:
+       - checkout
+       - run:
+           name: Install dependencies
+           command: yarn install
+       - run:
+            name: Run linter
+            command: yarn lint
+       - run:
+           name: Run test coverage
+           command: yarn coverage && yarn coveralls
