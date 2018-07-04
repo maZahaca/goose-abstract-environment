@@ -5,4 +5,4 @@
 [![Latest Stable Version](https://img.shields.io/npm/v/goose-abstract-environment.svg?style=flat)](https://www.npmjs.com/package/goose-abstract-environment)
 [![Total Downloads](https://img.shields.io/npm/dt/goose-abstract-environment.svg?style=flat)](https://www.npmjs.com/package/goose-abstract-environment)
 
-Environment for Goose Parser which allows to create own Environments following Goose Protocol
+Environment for [Goose Parser](https://github.com/redco/goose-parser) which allows to create own Environments following Goose Protocol
