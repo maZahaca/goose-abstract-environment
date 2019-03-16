@@ -1,10 +1,12 @@
 // var libFolder = process.env.JSCOV ? '../lib-cov/' : '../lib/';
 const AbstractEnvironment = require('../lib/AbstractEnvironment');
 const chai = require('chai');
+const spies = require('chai-spies');
 const chaiAsPromised = require('chai-as-promised');
 
 chai.should();
 chai.use(chaiAsPromised);
+chai.use(spies);
 const expect = chai.expect;
 const assert = chai.assert;
 
@@ -41,11 +43,8 @@ describe('AbstractEnvironment', () => {
   it('.snapshot', () => {
     return assert.isRejected(env.snapshot(), Error, /Current environment does not support snapshots/);
   });
-  it('.waitForPage', () => {
-    return assert.isRejected(env.waitForPage(), Error, /You must redefine waitForPage method in child environment/);
-  });
-  it('.waitForQuery', () => {
-    return assert.isRejected(env.waitForQuery(), Error, /You must redefine waitForQuery method in child environment/);
+  it('.goto', () => {
+    return assert.isRejected(env.goto('url'), Error, /You must redefine goto method in child environment/);
   });
   it('.back', () => {
     return assert.isRejected(env.back(), Error, /You must redefine back method in child environment/);
@@ -73,13 +72,46 @@ describe('AbstractEnvironment', () => {
     assert.typeOf(options, 'object');
     assert.equal(options.url, url);
   });
-  it('errBacks', async () => {
-    const testErrBack = () => {
+
+  function getSpiedCallback() {
+    return {
+      fn: chai.spy(() => {
+      }),
     };
-    env.addErrBack(testErrBack);
-    assert.lengthOf(env._errbacks, 1);
-    assert.equal(env._errbacks[0], testErrBack);
-    env.removeErrBack(testErrBack);
-    assert.lengthOf(env._errbacks, 0);
+  }
+
+  it('callbacks', async () => {
+    const args = {};
+    let callback = getSpiedCallback();
+    let spy = callback.fn;
+    const slug = 'navigation';
+    env.addCallback(slug, callback);
+    assert.lengthOf(env._callbacks[slug], 1);
+    assert.equal(env._callbacks[slug][0], callback);
+    env.removeCallback(slug, {});
+    assert.lengthOf(env._callbacks[slug], 1);
+    env.removeCallback('wrong', {});
+    assert.lengthOf(env._callbacks[slug], 1);
+    env.removeCallback(slug, callback);
+    assert.lengthOf(env._callbacks[slug], 0);
+
+    env.addCallback(slug, callback);
+    env.evaluateCallbacks('wrong');
+    assert.lengthOf(env._callbacks[slug], 1);
+
+    env.evaluateCallbacks(slug, null, args);
+    assert.lengthOf(env._callbacks[slug], 0);
+    expect(spy).to.have.been.called.once;
+    spy.should.have.been.called.with(args);
+
+    callback = getSpiedCallback();
+    spy = callback.fn;
+    callback.urlPattern = 'google.com';
+    env.addCallback(slug, callback);
+
+    env.evaluateCallbacks(slug, 'https://google.com/search', args);
+    assert.lengthOf(env._callbacks[slug], 0);
+    expect(spy).to.have.been.called.once;
+    spy.should.have.been.called.with(args);
   });
 });

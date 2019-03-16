@@ -1,23 +1,18 @@
 {
   "private": true,
-  "version": "1.0.12",
+  "version": "1.1.0",
   "name": "goose-abstract-environment",
   "main": "lib/AbstractEnvironment.js",
   "repository": "redco/goose-abstract-environment",
   "description": "Abstact Environment for Goose which can be base for other environments",
   "license": "SEE LICENSE IN LICENSE",
   "dependencies": {
-    "babel-polyfill": "^6.23.0",
     "debug": "^3.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-eslint": "^7.1.1",
-    "babel-plugin-transform-runtime": "^6.15.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
+    "chai-spies": "^1.0.0",
     "coveralls": "^3.0.0",
     "eslint": "^3.13.1",
     "eslint-config-airbnb-base": "^11.0.1",
